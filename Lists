@@ -1,0 +1,11 @@
+/*using the assign() function to assign values to a series of variables*/
+for i from 1 to 100 do _assign(x.i, i); end:
+
+/*generate a list X*/ 
+X:=[x.i $i=1..50];
+
+/*generate a list Y*/
+Y:=[y.i $i=1..50];
+
+/*compute innner product of X and Y*/
+_plus(op(zip(X,Y,_mult)));
