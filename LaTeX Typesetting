@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\setlength{\textheight}{180mm} \setlength{\textwidth}{126mm}
+\setlength{\oddsidemargin}{0cm} \setlength{\evensidemargin}{0cm}
+\setlength{\topmargin}{0.4cm}
+
+\usepackage{bera}
+\usepackage{listings,color}
+\usepackage[a4paper,bindingoffset=0.2in,left=0.5in,right=0.5in,top=1in,bottom=1in,footskip=0.25in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+
+\lstset{basicstyle=\small\ttfamily,breaklines=true,language=[LaTeX]{TeX}}
+
+\newtheorem*{x}{Proof}
+\newtheorem{lemma}{Lemma}[section]
+
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{dark-gray}{gray}{0.35}
+
+\lstset{backgroundcolor=\color{light-gray},keywordstyle=\color{blue},commentstyle=\color{cyan}}
+
+\begin{document}
+
+\title{Existence And Stability Of Solutions For Steady \\Flows Of Fibre Suspension Flows}
+
+\author{JMW Munganga}
+\date{}
+\maketitle
+
+\begin{abstract}
+
+We establish existence, uniqueness, convergence and stability of solutions
+to the equations of steady flows of fibre suspension flows. The existence
+of a unique steady solution is proven by using an iterative scheme.
+Exact solutions are calculated for Couette and Poiseuille flows. Solutions
+of Poiseuille flows are shown to be more accurate than those of Couette
+flow when a time perturbation is considered.\newline
+
+{\bf Keywords}: Fibre suspension flows, steady flow, existence, stability \\
+\textbf{AMS Subject Classification}: 35Q35, 76D03, 76A05
+\end{abstract}
+
+\section{Introduction}\label{intro}
+Fibre suspension flows are modeled here as a coupled system of nonlinear partial
+differential equations, where the primary variables are the velocity, the pressure
+and an additional tensorial variable which captures in an average sense the
+orientation fibres in space and time (for more details, see Ref.
+\cite{ADVANI  AND TUCKER 1987, ADVANI  AND TUCKER 1990, GALDI AND REDDY 1999, MUNGANGA REDDY DIATEZUA 2000, MUNGANGA REDDY 2002, MUNGANGA 2000}). 
+The tensor variable is of second-order. The constitutive equations contain a fourth-forder tensor, which here is approximated by the linear closure.
+
+In the past decade, the constitutive equations investigated in the present work were the subject of theoretical studies by GALDI AND REDDY \cite{GALDI AND REDDY 1999}, MUNGANGA, REDDY AND DIATEZUA. \cite{MUNGANGA REDDY DIATEZUA 2000, MUNGANGA REDDY  2002, MUNGANGA 2000} Their work have helped to better understand
+the properties of the equations governing the flow of fibre suspensions.
+GALDI AND REDDY,\cite{GALDI AND REDDY 1999} showed that for the linear closure, there is a connection between stability and the particle number: 
+in particular the rest state is unstable, in the sense of Liapounov, when the particle number exceeds 35/2. These authors also demonstrated the existence, locally in time, of a solution to the equations corresponding to the quadratic closure.
+
+MUNGANGA ET AL. \cite{MUNGANGA REDDY DIATEZUA 2000, MUNGANGA 2000} have studied the stability of fibre suspension
+flows from thermodynamic and energetic perceptive, for a wide range of closure
+approximations. MUNGANGA ET AL. \cite{MUNGANGA REDDY 2002, MUNGANGA 2000} also establish conditions for the
+existence of a unique classical solution, locally and globally in time, for the case 
+\newpage
+
+in which the linear and quadratic closure are used, and for constant value of the
+rotary diffusivity.\newline
+The rest of this paper is organised as follows. Section \ref{consti} reviews the mathematical model and carries out simplifications to the constitutive equations.
+Section \ref{esfs} establishes the existence of a unique convergent solution by a iterative
+scheme, using the small perturbations of the flow as a starting value for the iteration.
+
+\section{Constitutive Equations}\label{consti}
+We assume that the fluid occupies a bounded domain We consider steady flows
+of fibre suspensions for which the constitutive equations are given below (for
+the linear closure, see \cite{ADVANI AND TUCKER 1987, ADVANI AND TUCKER 1990, GALDI AND REDDY 1999, MUNGANGA REDDY DIATEZUA 2000, MUNGANGA REDDY 2002, MUNGANGA 2000} for more details)
+
+\begin{eqnarray}
+	& &\mathit{Re}(v\prime +(\mathbf{v}.\nabla)\mathbf{v}) + \nabla\mathit{p} - \gamma(1 - \frac{2}{35}N_\mathit{p})\Delta\mathbf{v} = \mathbf{b} \nonumber\\
+	& &+div{N(\mathbf{AD} + \mathbf{DA}) + N_\mathit{p}(\mathbf{A}:\mathbf{D})\mathbf{I}}, \label{inye}
+\end{eqnarray}
+
+\begin{equation}
+div \mathbf{u} = 0, \label{zimbini}
+\end{equation}
+
+\begin{eqnarray}
+	& &\mathbf{A} + \mathit{We} \{\mathbf{A}\prime + (\mathbf{v}.\nabla)\mathbf{A} + \mathbf{AW} - \mathbf{WA} - \frac{3\lambda}{7}(\mathbf{AD} + \mathbf{DA})\} \nonumber\\ & &= 2\omega\mathbf{D} + \frac{2\lambda}{7}\mathit{We}(\mathbf{A} : \mathbf{D})\mathbf{I}, \label{zintathu}
+\end{eqnarray}
+
+\begin{equation}
+	tr\mathbf{A} = 0, \label{zine}
+\end{equation}
+
+\begin{equation}
+	\mathbf{u}\mid_\Gamma = 0, \mathbf{u}(0) = \mathbf{u}_0, \mathbf{A}(\mathit{t} = 0) = \mathbf{A}_0, \mathbf{A}_{0}^{T} = \mathbf{A}_0; \label{zintlanu}
+\end{equation}
+
+where $\mathbf{u}$ is the fluid velocity, $\mathbf{A}$ is the orientation tensor.
+In \textbf{\ref{LEM1}}, we show that Eqs.(\ref{inye}) and (\ref{zintlanu}) can be simplified further due to the tracelessness of $\mathbf{A}$.
+
+\begin{lemma}
+If $(\mathbf{v,A}$) is a solution of (\ref{inye}) - (\ref{zintlanu}) and $ \lambda {\neq} 0 $ then $\mathbf{ A : D} = 0$. \label{LEM1}
+\end{lemma}
+
+\begin{proof}
+	We take the trace of both side of the evolution equation (\ref{zintathu}), we have
+	\begin{eqnarray}
+		We\{ \frac{d}{dt}tr\mathbf{A} + [\mathbf{v}.\nabla]\mathit{tr}\mathbf{A} \} &=& \mathit{We}\{\mathit{tr}(\mathbf{WA} - \mathit{tr}(\mathbf{AW)} + (\mathit{tr}(\mathbf{DA}))\} \nonumber\\ & & + \mathit{We}[\frac{3\lambda}{7}\mathit{tr}(\mathbf{AD} - \frac{2\lambda}{7}\mathbf{A} : \mathbf{D}] - 2\omega\mathit{tr}\mathbf{D} \nonumber\\&=& 2\mathit{We}\mathbf{W} : \mathbf{A} - 2\omega\mathit{tr}\mathbf{D} + \frac{4\lambda\mathit{We}}{7}\mathbf{A} : \mathbf{D}. \label{ses}
+	\end{eqnarray}
+{\it Since}, \textbf{A} {\it is symmetric and} \textbf{W} {\it is skew symmetric, we have} $\mathbf{W} : \mathbf{A} = 0$, {\it and} $tr\mathbf{D} = div\mathbf{v} = 0$. {\it Hence (\ref{ses}) becomes}:
+	
+	\begin{equation}
+		\mathit{We}\{\frac{d}{dt}\mathit{tr}\mathbf{A} + [\mathbf{v}.\nabla]\mathit{tr}\mathbf{A}\} = \frac{4\lambda\mathit{We}}{7}\mathbf{A} : \mathbf{D} \label{sewe}
+	\end{equation}
+	
+	{\it if} $\mathit{tr}\mathbf{A} = 0$, \emph{then from (\ref{sewe}), it follows that} $\mathbf{A : D} = 0$, {\it since} $\lambda \neq 0$.
+\end{proof}
+
+
+\newpage
+With the help of lemma \ref{LEM1} the problem (\ref{inye}) - (\ref{zintlanu}) reduces to:
+
+\begin{equation}
+Re(v\prime +(\mathbf{v}.\nabla)\mathbf{v}) + \nabla\mathit{p} - \gamma(1 - \frac{2N_p}{35})\Delta\mathbf{v} = \mathbf{b} + div\{\mathit{N}(\mathbf{AD+DA})\} \label{agt}
+\end{equation}
+
+\begin{equation}
+div \mathbf{v} = 0, \label{nege}
+\end{equation}
+
+\begin{equation}
+\mathbf{A} + We\{\mathbf{A}\prime + (\mathbf{v}.\nabla)\mathbf{A} + \mathbf{AW} - \mathbf{WA} - \frac{3\lambda}{7}(\mathbf{AD} + \mathbf{DA})\} = 2\omega\mathbf{D}, \label{tien}
+\end{equation}
+
+\begin{equation}
+tr\mathbf{A} = 0, \label{elf}
+\end{equation}
+
+\begin{equation}
+\mathbf{v}\mid_\Gamma = 0, \mathbf{v}(0) = \mathbf{v}_0, \mathbf{A}(\mathit{t} = 0) = \mathbf{A}_0, \mathbf{A}_{0}^{T} = \mathbf{A}_0; \label{twalf} 
+\end{equation}
+
+\section{Existence of Steady Flow Solutions} \label{esfs}
+In this section, we prove the existence of steady solution for fibre suspension
+flows defined by the problem (\ref{agt}) - (\ref{twalf}). Iterative scheme will be used to obtain
+the solution and this solution will be proven to be asymptotically stable, by
+assuming a more restrictive condition on the data.
+
+\subsection{Perturbation of solutions}
+Since, we are interested in steady solution ($\mathbf{v,A}$) of the problem (\ref{agt}) - (\ref{tien}) with
+initial and boundary conditions (\ref{twalf}), we will compare the solution ($\mathbf{u,A}$) to
+($\overline{\mathbf{u}}, \mathbf{0}$) , where $\overline{u}$ is the solution to the steady Navier-Stokes problem
+
+\begin{eqnarray}
+	div\overline{u} &=& 0' \label{thrtin} \\
+	Re(\mathbf{\overline{u}}.\nabla)\mathbf{\overline{u}}+\overline{\gamma}\mathcal{L}\overline{\mathbf{u}} + \nabla\overline{p} &=&  \mathbf{b}, \label{frtin} \\
+	\overline{\mathbf{u}}\mid\Gamma &=& 0; \label{fft}
+\end{eqnarray}
+
+Let $\overline{\mathbf{u}}\epsilon \mathbb{X}_3$ satisfying (\ref{thrtin}) - (\ref{fft}) such that $\mathit{L}_\lambda[\overline{\mathbf{u}}] \mathbf{v} : \mathbf{D}(\mathbf{\mathcal{L}}) \longrightarrow \mathbb{H}$, defined by
+
+\begin{equation}
+\mathit{L}_\lambda[\overline{\mathbf{u}}]\mathbf{v} = Re\mathit{P}\Bigl\{(\overline{\mathbf{u}}\cdot\nabla)\mathbf{v} + (\mathbf{v}\cdot\nabla)\overline{u}\Bigr\} + \lambda\mathcal{L}\mathbf{v}, \lambda>0. \label{sestien} 
+\end{equation}
+
+
+\begin{thebibliography}{10}
+	\bibitem{ADVANI AND TUCKER 1987} Advani S.G and Tucker C.L., The use of tensors to describe and predict fibre orientation in short fibre composites. \emph{J. Rheology}, \textbf{31} (1987) 751-784.
+	
+	\bibitem{ADVANI  AND TUCKER 1990} Advani S.G and Tucker C.L., Closure approximations for three-dimensional structure tensors, \emph{J. Rheology}, \textbf{34(3)} (1990) 367-386
+	
+	\bibitem{GALDI AND REDDY 1999} Galdi G.P. and Reddy B.D., Well-posedness of the problem of fibre suspension flows. \emph{J. Non-Newtownian Fluid Mech.} \textbf{83}, (1999) 205-230
+	
+	\bibitem{MUNGANGA REDDY DIATEZUA 2000} Munganga J.M.W., Reddy B.D. and Diatezua K.J., Aspects of the thermodynamic stability of fibre suspension flows \emph{J. of Non-Newtownian fluid Mech.} \textbf{92} (2000) 135-150.
+	
+	\bibitem{MUNGANGA REDDY 2002} Munganga J.M.W and Reddy B.D., Local and global existence of solutions to equations for flows of fibre suspensions. \emph{Math. Models Methods Appl. Sci} \textbf{12} (2002) 1177-1203.
+	
+	\bibitem{MUNGANGA 2000} Munganga J.M.W., Existence and Stability and Solutions to the Equations of Fibre Suspension Flows. \emph{PhD Thesis, University of Cape Town} (2000) 1177-1203
+
+\end{thebibliography}
+\end{document}
